@@ -3,5 +3,9 @@ const postControllers = require("../controllers/postControllers");
 
 router.post("/post", postControllers.createNewPost);
 router.put("/post/:id", postControllers.updatePost);
+router.delete("/post/:id", postControllers.deletePost);
+router.get("/post/:id", postControllers.getPost);
+router.put("/post/:id/like", postControllers.likePost);
+router.get("/post/timeline/feed", postControllers.getTimeline);
 
 module.exports = router;
