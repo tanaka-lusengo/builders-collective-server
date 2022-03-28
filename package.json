@@ -5,12 +5,14 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "start-scrape": "nodemon webApi.js"
   },
   "keywords": [],
   "author": "Tanaka Lusengo",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
