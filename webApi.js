@@ -18,6 +18,85 @@ const REED_API_GET_BY_JT = (jobTitle) => `${REED_API_URL}keywords=${jobTitle}`;
 const REED_API_GET_BY_JT_LO = (jobTitle, location) =>
   `${REED_API_URL}keywords=${jobTitle}&location=${location}`;
 
+const onSuccess = async (response) => {
+  // map through api information to gather required info
+  try {
+    await response.map((job) => {
+      let jobId = job.jobId;
+      let employerId = job.employerId;
+      let employerName = job.employerName;
+      let jobTitle = job.jobTitle;
+      let locationName = job.locationName;
+      let minimumSalary = job.minimumSalary;
+      let maximumSalary = job.maximumSalary;
+      let expirationDate = job.expirationDate;
+      let date = job.date;
+      let jobDescription = job.jobDescription;
+      let applications = job.applications;
+      let jobUrl = job.jobUrl;
+
+      //create new job function
+      assignDataValueToMongoDB(
+        jobId,
+        employerId,
+        employerName,
+        jobTitle,
+        locationName,
+        minimumSalary,
+        maximumSalary,
+        expirationDate,
+        date,
+        jobDescription,
+        applications,
+        jobUrl
+      );
+    });
+  } catch (err) {
+    console.log("onSuccess error -->", err);
+  }
+};
+
+// function to create new job
+const assignDataValueToMongoDB = async (
+  jobId,
+  employerId,
+  employerName,
+  jobTitle,
+  locationName,
+  minimumSalary,
+  maximumSalary,
+  expirationDate,
+  date,
+  jobDescription,
+  applications,
+  jobUrl
+) => {
+  try {
+    let uploadData = await new JobModel({
+      jobId: jobId,
+      employerId: employerId,
+      employerName: employerName,
+      jobTitle: jobTitle,
+      locationName: locationName,
+      minimumSalary: minimumSalary,
+      maximumSalary: maximumSalary,
+      expirationDate: expirationDate,
+      date: date,
+      jobDescription: jobDescription,
+      applications: applications,
+      jobUrl: jobUrl,
+    });
+
+    // save new jobs
+    await uploadData.save();
+  } catch (err) {
+    console.log("assignDataValueToMongoDB error -->", err);
+  }
+};
+
+// data from API to be pushed into MongoDB
+//--------------------------------------------------------
+
 // get quantity surveyor Jobs
 const getQSJobs = async () => {
   try {
@@ -26,11 +105,15 @@ const getQSJobs = async () => {
         username: Reed_API_KEY,
       },
     });
-    return qsJobs.data.results;
+    const response = qsJobs.data.results;
+    onSuccess(response);
+    console.log(onSuccess(response));
   } catch (err) {
     console.log("get Quantity Surveyor Jobs error -->", err);
   }
 };
+
+// getQSJobs();
 
 // get construction manager jobs
 const getCMJobs = async () => {

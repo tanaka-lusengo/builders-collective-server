@@ -1,10 +1,22 @@
 const router = require("express").Router();
 const jobControllers = require("../controllers/jobControllers");
 
-router.get("/jobs-all", jobControllers.getJobs);
-router.get("/job/:jobTitle", jobControllers.getJobsByTitle);
+// api route to push straight to mongoDB
+jobControllers.getQSJobs();
+jobControllers.getCMJobs();
+jobControllers.getCAJobs();
+jobControllers.getElecJobs();
+jobControllers.getPlumberJobs();
+jobControllers.getAirconJobs();
+jobControllers.getBricklayerJobs();
+jobControllers.getCarpenterJobs();
+jobControllers.getPlastererJobs();
+
+// front-end job routes
+router.get("/jobs", jobControllers.getJobs);
+router.get("/jobs/:jobTitle", jobControllers.getJobsByTitle);
 router.get(
-  "/job/:jobTitle/:location",
+  "/jobs/:jobTitle/:locationName",
   jobControllers.getJobsByTitleAndLocation
 );
 
