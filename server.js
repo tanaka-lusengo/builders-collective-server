@@ -20,7 +20,7 @@ const deleteJobCollection = async (collection) => {
   }
 };
 
-deleteJobCollection(JobModel);
+// deleteJobCollection(JobModel);
 
 // routes
 const userRoutes = require("./routes/userRoutes");
