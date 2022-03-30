@@ -284,6 +284,21 @@ const getJobsByTitle = async (req, res) => {
   }
 };
 
+// get jobs by locationName
+const getJobsByLocation = async (req, res) => {
+  const { locationName } = req.params;
+  // regex expression to search/filter database for similar matching words, not exact - flexible
+  const locationNameRegex = new RegExp(locationName);
+  try {
+    const post = await JobModel.find({
+      locationName: { $regex: locationNameRegex, $options: "i" },
+    });
+    res.status(200).json(post);
+  } catch (err) {
+    return res.status(500).json("getJobsByLocationName error -->", err);
+  }
+};
+
 // get jobs by title and location
 const getJobsByTitleAndLocation = async (req, res) => {
   const { jobTitle, locationName } = req.params;
@@ -313,5 +328,6 @@ module.exports = {
   getPlastererJobs,
   getJobs,
   getJobsByTitle,
+  getJobsByLocation,
   getJobsByTitleAndLocation,
 };
