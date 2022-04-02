@@ -4,7 +4,7 @@ const UserModel = require("../models/userModels");
 // create new post
 const createNewPost = async (req, res) => {
   // destruct post fields
-  const { userId, content } = req.body;
+  const { userId, content, image } = req.body;
 
   //create new post
   if (!userId || !content) {
@@ -16,6 +16,7 @@ const createNewPost = async (req, res) => {
       const newPost = await new PostModel({
         userId: userId,
         content: content,
+        image: image,
       });
 
       // save new post and respond to client console
@@ -86,11 +87,21 @@ const getPost = async (req, res) => {
   }
 };
 
+// get all posts
+const getAllPosts = async (_req, res) => {
+  try {
+    const posts = await PostModel.find({});
+    res.status(200).json(posts);
+  } catch (err) {
+    res.status(500).json("getAllPosts error -->", err);
+  }
+};
+
 // get timeline posts/feed for current user and posts from who the user is following
 const getTimeline = async (req, res) => {
   try {
     // find current user
-    const currentUser = await UserModel.findById(req.body.userId);
+    const currentUser = await UserModel.findById(req.params.userId);
     // find all posts from the current user
     const userPosts = await PostModel.find({ userId: currentUser._id });
     // find all posts from those you/current user are following. Using await inside .map wont fetch all, that's why use Promise.all
@@ -100,7 +111,7 @@ const getTimeline = async (req, res) => {
       })
     );
     // combined the posts into one array to generate feed for current user posts and user's who current follows.
-    res.status(200).json([...userPosts, ...friendsPosts]);
+    res.status(200).json(userPosts.concat(...friendsPosts));
   } catch (err) {
     res.status(500).json("getTimeline error -->", err);
   }
@@ -112,5 +123,6 @@ module.exports = {
   deletePost,
   likePost,
   getPost,
+  getAllPosts,
   getTimeline,
 };

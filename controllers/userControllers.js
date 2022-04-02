@@ -13,6 +13,11 @@ const registerNewUser = async (req, res) => {
     jobTitle,
     experienceLevel,
     location,
+    about,
+    skills,
+    education,
+    profilePicture,
+    coverPicture,
   } = req.body;
 
   if (
@@ -44,6 +49,11 @@ const registerNewUser = async (req, res) => {
         jobTitle: jobTitle,
         experienceLevel: experienceLevel,
         location: location,
+        about: about,
+        skills: skills,
+        education: education,
+        profilePicture: profilePicture,
+        coverPicture: coverPicture,
       });
 
       // save new user and respond to client console
@@ -134,6 +144,19 @@ const getUserById = async (req, res) => {
   }
 };
 
+// get all users
+const getAllUsers = async (_req, res) => {
+  try {
+    const users = await UserModel.find({});
+
+    // don't want to return password, so destruct and return the rest: ...other
+    // const { password, ...other } = users; -- figure this out!
+    res.status(200).json(users);
+  } catch (err) {
+    return res.status(500).json("getAllUsers findById -->", err);
+  }
+};
+
 // follow a user
 const followUser = async (req, res) => {
   if (req.body.userId !== req.params.id) {
@@ -184,6 +207,7 @@ module.exports = {
   updateUser,
   deleteUser,
   getUserById,
+  getAllUsers,
   followUser,
   unFollowUser,
 };
