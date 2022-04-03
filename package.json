@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "start-scrape": "nodemon webApi.js"
+    "start-socket": "nodemon socket.js"
   },
   "keywords": [],
   "author": "Tanaka Lusengo",
@@ -18,8 +18,10 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "helmet": "^5.0.2",
+    "moment": "^2.29.1",
     "mongoose": "^6.2.8",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "socket.io": "^4.4.1"
   }
 }
