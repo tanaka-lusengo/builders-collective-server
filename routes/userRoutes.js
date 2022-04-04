@@ -6,7 +6,7 @@ router.post("/register", userControllers.registerNewUser);
 router.post("/login", userControllers.loginUser);
 router.put("/user/:id", userControllers.updateUser);
 router.delete("/user/:id", userControllers.deleteUser);
-router.get("/user/:id", userControllers.getUserById);
+router.get("/user", userControllers.getUserById);
 router.get("/users/all", userControllers.getAllUsers);
 router.put("/user/:id/follow", userControllers.followUser);
 router.delete("/user/:id/unfollow", userControllers.unFollowUser);

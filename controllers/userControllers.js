@@ -132,10 +132,17 @@ const deleteUser = async (req, res) => {
   }
 };
 
-// get user by id
+// get user by id - using query params allows use of two, userId or username
 const getUserById = async (req, res) => {
+  const userId = req.query.userId;
+  const username = req.query.username;
+  console.log(userId);
+  console.log(username);
   try {
-    const user = await UserModel.findById(req.params.id);
+    const user = userId
+      ? await UserModel.findById(userId)
+      : await UserModel.findOne({ username: username });
+    console.log(user);
     // don't want to return password, so destruct and return the rest: ...other
     const { password, ...other } = user._doc;
     res.status(200).json(other);
