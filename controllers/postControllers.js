@@ -117,6 +117,18 @@ const getTimeline = async (req, res) => {
   }
 };
 
+// get timeline for current user matching the username in the url/params
+const getTimelineForUser = async (req, res) => {
+  try {
+    // find current user with params
+    const user = await UserModel.findOne({ username: req.params.username });
+    const posts = await PostModel.find({ userId: user._id });
+    res.status(200).json(posts);
+  } catch (err) {
+    res.status(500).json("getTimelineForUser error -->", err);
+  }
+};
+
 module.exports = {
   createNewPost,
   updatePost,
@@ -125,4 +137,5 @@ module.exports = {
   getPost,
   getAllPosts,
   getTimeline,
+  getTimelineForUser,
 };
