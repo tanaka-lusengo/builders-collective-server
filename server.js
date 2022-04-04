@@ -29,7 +29,8 @@ const deleteJobCollection = async (collection) => {
 const userRoutes = require("./routes/userRoutes");
 const postRoutes = require("./routes/postRoutes");
 const jobRoutes = require("./routes/jobRoutes");
-const { Socket } = require("socket.io");
+const newsRoutes = require("./routes/newsRoutes");
+// const { Socket } = require("socket.io");
 
 // middleware
 app.use(express.json());
