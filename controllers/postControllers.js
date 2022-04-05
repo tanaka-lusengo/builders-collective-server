@@ -58,6 +58,7 @@ const deletePost = async (req, res) => {
     res.status(500).json("deletePost error -->", err);
   }
 };
+
 // like/dislike post
 const likePost = async (req, res) => {
   try {

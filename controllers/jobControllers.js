@@ -92,7 +92,7 @@ const assignDataValueToMongoDB = async (
   }
 };
 
-// data from API to be pushed into MongoDB
+// function to push API data to be pushed into MongoDB
 //--------------------------------------------------------
 
 // get quantity surveyor Jobs
@@ -105,7 +105,7 @@ const getQSJobs = async () => {
     });
     const response = qsJobs.data.results;
     await onSuccess(response);
-    console.log("QS Jobs -->", response.length);
+    // console.log("QS Jobs -->", response.length);
   } catch (err) {
     console.log("get Quantity Surveyor Jobs error -->", err);
   }
@@ -122,7 +122,7 @@ const getCMJobs = async () => {
 
     const response = cmJobs.data.results;
     await onSuccess(response);
-    console.log("CM Jobs -->", response.length);
+    // console.log("CM Jobs -->", response.length);
   } catch (err) {
     console.log("get Construction Manager Jobs error -->", err);
   }
@@ -142,7 +142,7 @@ const getCAJobs = async () => {
 
     const response = caJobs.data.results;
     await onSuccess(response);
-    console.log("Arch Jobs -->", response.length);
+    // console.log("Arch Jobs -->", response.length);
   } catch (err) {
     console.log("get Architecture Jobs error -->", err);
   }
@@ -159,7 +159,7 @@ const getElecJobs = async () => {
 
     const response = elecJobs.data.results;
     await onSuccess(response);
-    console.log("Elec Jobs -->", response.length);
+    // console.log("Elec Jobs -->", response.length);
   } catch (err) {
     console.log("get Electrician Jobs error -->", err);
   }
@@ -179,7 +179,7 @@ const getPlumberJobs = async () => {
 
     const response = plumberJobs.data.results;
     await onSuccess(response);
-    console.log("Plumb Jobs -->", response.length);
+    // console.log("Plumb Jobs -->", response.length);
   } catch (err) {
     console.log("get Plumber Jobs error -->", err);
   }
@@ -199,7 +199,7 @@ const getAirconJobs = async () => {
 
     const response = airconJobs.data.results;
     await onSuccess(response);
-    console.log("Aircon Jobs -->", response.length);
+    // console.log("Aircon Jobs -->", response.length);
   } catch (err) {
     console.log("get Aircon Jobs error -->", err);
   }
@@ -216,7 +216,7 @@ const getBricklayerJobs = async () => {
 
     const response = bricklayerJobs.data.results;
     await onSuccess(response);
-    console.log("Brick Jobs -->", response.length);
+    // console.log("Brick Jobs -->", response.length);
   } catch (err) {
     console.log("get Bricklayer Jobs error -->", err);
   }
@@ -233,7 +233,7 @@ const getCarpenterJobs = async () => {
 
     const response = carpenterJobs.data.results;
     await onSuccess(response);
-    console.log("Carpenter Jobs -->", response.length);
+    // console.log("Carpenter Jobs -->", response.length);
   } catch (err) {
     console.log("get Carpenter Jobs error -->", err);
   }
@@ -250,7 +250,7 @@ const getPlastererJobs = async () => {
 
     const response = plastererJobs.data.results;
     await onSuccess(response);
-    console.log("Plaster Jobs -->", response.length);
+    // console.log("Plaster Jobs -->", response.length);
   } catch (err) {
     console.log("get Plasterer Jobs error -->", err);
   }
