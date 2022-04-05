@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt");
 
 // register new user
 const registerNewUser = async (req, res) => {
-  // destruct user fields
   const {
     firstName,
     lastName,
@@ -60,7 +59,7 @@ const registerNewUser = async (req, res) => {
       const user = await newUser.save();
       res.status(201).json(user);
     } catch (err) {
-      res.status(500).json(err);
+      res.status(401).json(err);
       console.log("registerNewUser userControllers error -->", err);
     }
   }
@@ -72,17 +71,21 @@ const loginUser = async (req, res) => {
   try {
     // check if user already exists
     const user = await UserModel.findOne({ email: email });
-    !user &&
+    if (!user) {
       res
-        .status(404)
+        .status(401)
         .json(
           "user not found, please register new user or enter details correctly"
         );
+      return;
+    }
 
     // check for password
     const validPassword = await bcrypt.compare(password, user.password);
-    !validPassword &&
-      res.status(400).json("wrong password, please enter correct password");
+    if (!validPassword) {
+      res.status(401).json("wrong password, please enter correct password");
+      return;
+    }
 
     res.status(200).json(user);
   } catch (err) {
@@ -136,31 +139,15 @@ const deleteUser = async (req, res) => {
 const getUserById = async (req, res) => {
   const userId = req.query.userId;
   const username = req.query.username;
-  console.log(userId);
-  console.log(username);
   try {
     const user = userId
       ? await UserModel.findById(userId)
       : await UserModel.findOne({ username: username });
-    console.log(user);
     // don't want to return password, so destruct and return the rest: ...other
     const { password, ...other } = user._doc;
     res.status(200).json(other);
   } catch (err) {
     return res.status(500).json("getUserById findById -->", err);
-  }
-};
-
-// get all users
-const getAllUsers = async (_req, res) => {
-  try {
-    const users = await UserModel.find({});
-
-    // don't want to return password, so destruct and return the rest: ...other
-    // const { password, ...other } = users; -- figure this out!
-    res.status(200).json(users);
-  } catch (err) {
-    return res.status(500).json("getAllUsers findById -->", err);
   }
 };
 
@@ -214,7 +201,6 @@ module.exports = {
   updateUser,
   deleteUser,
   getUserById,
-  getAllUsers,
   followUser,
   unFollowUser,
 };

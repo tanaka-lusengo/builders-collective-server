@@ -9,10 +9,10 @@ const morgan = require("morgan");
 const cors = require("cors");
 const http = require("http");
 const { Server } = require("socket.io");
-require("dotenv").config();
+const dotenv = require("dotenv");
+dotenv.config();
 
-// const PORT = process.env.PORT;
-const PORT = 8080 || 4040;
+const PORT = process.env.PORT || 4040;
 
 // function to delete JobModel collection everytimebefore axios call as to always have the latest jobs displayed
 const deleteJobCollection = async (collection) => {
@@ -23,14 +23,13 @@ const deleteJobCollection = async (collection) => {
   }
 };
 
-// deleteJobCollection(JobModel);
+deleteJobCollection(JobModel);
 
 // routes
+const jobRoutes = require("./routes/jobRoutes");
 const userRoutes = require("./routes/userRoutes");
 const postRoutes = require("./routes/postRoutes");
-const jobRoutes = require("./routes/jobRoutes");
-const newsRoutes = require("./routes/newsRoutes");
-// const { Socket } = require("socket.io");
+// const newsRoutes = require("./routes/newsRoutes");
 
 // middleware
 app.use(express.json());
@@ -42,6 +41,7 @@ app.use(cors());
 app.use(userRoutes);
 app.use(postRoutes);
 app.use(jobRoutes);
+// app.use(newsRoutes);
 
 // connection to MongoDB
 mongoose.connect(process.env.MONGO_URL, function (err) {
@@ -59,7 +59,7 @@ app.listen(PORT, () => {
   );
 });
 
-// messaging feature
+// messaging/My Network feature
 //--------------------------------------------------
 
 // establish connection to new instance "server"
@@ -97,7 +97,10 @@ io.on("connection", (socket) => {
   });
 });
 
-const SOCKET_PORT = 3001 || 3002;
+// console.log(process.env.SOCKET_PORT);
+
+const SOCKET_PORT = process.env.SOCKET_PORT || 3202;
+// const SOCKET_PORT = 3001 || 3202;
 
 appS.get("/", (_req, res) => {
   res.send("Welcome to the Builders' Collective Socket Server!");

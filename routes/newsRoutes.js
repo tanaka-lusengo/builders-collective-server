@@ -2,23 +2,9 @@
 // const newsControllers = require("../controllers/newsControllers");
 
 // // api route to push straight to mongoDB
-// // jobControllers.getQSJobs();
-// // jobControllers.getCMJobs();
-// // jobControllers.getCAJobs();
-// // jobControllers.getElecJobs();
-// // jobControllers.getPlumberJobs();
-// // jobControllers.getAirconJobs();
-// // jobControllers.getBricklayerJobs();
-// // jobControllers.getCarpenterJobs();
-// // jobControllers.getPlastererJobs();
+// newsControllers.getNewsArticles();
 
 // // front-end job routes
-// router.get("/jobs", jobControllers.getJobs);
-// router.get("/jobs/title/:jobTitle", jobControllers.getJobsByTitle);
-// router.get("/jobs/location/:locationName", jobControllers.getJobsByLocation);
-// router.get(
-//   "/jobs/:jobTitle/:locationName",
-//   jobControllers.getJobsByTitleAndLocation
-// );
+// router.get("/news", newsControllers.getNewsArticles);
 
 // module.exports = router;
