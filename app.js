@@ -95,7 +95,7 @@ io.on("connection", (socket) => {
   });
 });
 
-const PORT = process.env.PORT || 4040;
+// const PORT = process.env.PORT || 4040;
 
 appS.get("/", (_req, res) => {
   res.send("Welcome to the Builders' Collective Socket Server!");
