@@ -29,7 +29,6 @@ deleteJobCollection(JobModel);
 const jobRoutes = require("./routes/jobRoutes");
 const userRoutes = require("./routes/userRoutes");
 const postRoutes = require("./routes/postRoutes");
-// const newsRoutes = require("./routes/newsRoutes");
 
 // middleware
 app.use(express.json());
@@ -41,7 +40,6 @@ app.use(cors());
 app.use(userRoutes);
 app.use(postRoutes);
 app.use(jobRoutes);
-// app.use(newsRoutes);
 
 // connection to MongoDB
 mongoose.connect(process.env.MONGO_URL, function (err) {
