@@ -66,7 +66,7 @@ const server = http.createServer(appS);
 // cors management safe guarding
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://builders-collective.herokuapp.com/",
     methods: ["GET", "POST"],
   },
 });
@@ -94,8 +94,6 @@ io.on("connection", (socket) => {
     io.emit("message", "A user has left the chat");
   });
 });
-
-// console.log(process.env.SOCKET_PORT);
 
 const SOCKET_PORT = process.env.SOCKET_PORT || 3202;
 // const SOCKET_PORT = 3001 || 3202;
