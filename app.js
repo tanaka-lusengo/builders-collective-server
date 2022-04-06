@@ -95,14 +95,12 @@ io.on("connection", (socket) => {
   });
 });
 
-// const PORT = process.env.PORT || 4040;
+const SOCKET_PORT = process.env.SOCKET_PORT || 4040;
 
 appS.get("/", (_req, res) => {
   res.send("Welcome to the Builders' Collective Socket Server!");
 });
 
-server.listen(PORT, () => {
-  console.log(
-    `Builders' Collective Network Chat listening on http://localhost:${PORT}`
-  );
+server.listen(SOCKET_PORT, () => {
+  console.log(`Builders' Collective Network Chat listening on :${SOCKET_PORT}`);
 });
