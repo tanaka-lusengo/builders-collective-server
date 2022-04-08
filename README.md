@@ -33,11 +33,11 @@ Install the dependencies and devDependencies and start the server.
 
 This application requires the below .env environment variables to run as seen on .env.example:
 
-PORT = "PORT"
-SOCKET_PORT = "SOCKET_PORT"
-API_KEY="KEY"
-ORIGIN="URL"
-MONGO_URL = "MONGO_URL STRING"
+- PORT = "PORT"
+- SOCKET_PORT = "SOCKET_PORT"
+- API_KEY="KEY"
+- ORIGIN="URL"
+- MONGO_URL = "MONGO_URL STRING"
 
 
 ```sh
