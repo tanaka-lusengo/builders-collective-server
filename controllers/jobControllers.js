@@ -5,7 +5,7 @@ const axios = require("axios");
 //--------------------------------------------------------
 
 // REED api key
-const Reed_API_KEY = "1cf1add8-48e0-483c-ab80-541946ba2d7f";
+const Reed_API_KEY = process.env.API_KEY;
 
 // REED api endpoint
 const REED_API_URL = "https://www.reed.co.uk/api/1.0/search?";
