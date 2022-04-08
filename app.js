@@ -63,10 +63,12 @@ app.listen(PORT, () => {
 // establish connection to new instance "server"
 const server = http.createServer(appS);
 
+const ORIGIN = process.env.ORIGIN;
+
 // cors management safe guarding
 const io = new Server(server, {
   cors: {
-    origin: "https://builders-collective.herokuapp.com/",
+    origin: ORIGIN,
     methods: ["GET", "POST"],
   },
 });
@@ -102,5 +104,7 @@ appS.get("/", (_req, res) => {
 });
 
 server.listen(SOCKET_PORT, () => {
-  console.log(`Builders' Collective Network Chat listening on :${SOCKET_PORT}`);
+  console.log(
+    `Builders' Collective Network Chat listening on http://localhost:${SOCKET_PORT}`
+  );
 });
