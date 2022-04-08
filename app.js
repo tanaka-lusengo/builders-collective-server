@@ -60,49 +60,51 @@ app.listen(PORT, () => {
 // messaging/My Network feature
 //--------------------------------------------------
 
-// // establish connection to new instance "server"
-// const server = http.createServer(appS);
+// establish connection to new instance "server"
+const server = http.createServer(appS);
 
-// // cors management safe guarding
-// const io = new Server(server, {
-//   cors: {
-//     origin: "http://localhost:3000",
-//     methods: ["GET", "POST"],
-//   },
-// });
+const ORIGIN = process.env.ORIGIN;
 
-// // listening for event with "connection" id
-// io.on("connection", (socket) => {
-//   //welcomes current user
-//   socket.emit("message", "Welcome to the Builders' Collective Chat Stream");
+// cors management safe guarding
+const io = new Server(server, {
+  cors: {
+    origin: ORIGIN,
+    methods: ["GET", "POST"],
+  },
+});
 
-//   // broadcast to other users when a new user connects
-//   socket.broadcast.emit("message", "A user has joined the chat");
+// listening for event with "connection" id
+io.on("connection", (socket) => {
+  //welcomes current user
+  socket.emit("message", "Welcome to the Builders' Collective Chat Stream");
 
-//   // upon joining a room
-//   socket.on("join_room", (data) => {
-//     socket.join(data);
-//   });
+  // broadcast to other users when a new user connects
+  socket.broadcast.emit("message", "A user has joined the chat");
 
-//   // Listen for sendMessage() function for message sent from chat room
-//   socket.on("send_message", (messageData) => {
-//     socket.to(messageData.room).emit("receive_message", messageData);
-//   });
+  // upon joining a room
+  socket.on("join_room", (data) => {
+    socket.join(data);
+  });
 
-//   // lets all users know when a user disconnects
-//   socket.on("disconnect", () => {
-//     io.emit("message", "A user has left the chat");
-//   });
-// });
+  // Listen for sendMessage() function for message sent from chat room
+  socket.on("send_message", (messageData) => {
+    socket.to(messageData.room).emit("receive_message", messageData);
+  });
 
-// const SOCKET_PORT = process.env.SOCKET_PORT || 4040;
+  // lets all users know when a user disconnects
+  socket.on("disconnect", () => {
+    io.emit("message", "A user has left the chat");
+  });
+});
 
-// appS.get("/", (_req, res) => {
-//   res.send("Welcome to the Builders' Collective Socket Server!");
-// });
+const SOCKET_PORT = process.env.SOCKET_PORT || 4040;
 
-// server.listen(SOCKET_PORT, () => {
-//   console.log(
-//     `Builders' Collective Network Chat listening on http://localhost:${SOCKET_PORT}`
-//   );
-// });
+appS.get("/", (_req, res) => {
+  res.send("Welcome to the Builders' Collective Socket Server!");
+});
+
+server.listen(SOCKET_PORT, () => {
+  console.log(
+    `Builders' Collective Network Chat listening on http://localhost:${SOCKET_PORT}`
+  );
+});
