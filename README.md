@@ -49,12 +49,12 @@ npm start
 Runs the app in the development mode.
 
 ## Status
-Builders’ Collective is in Version 1 (post capston Demo Day). Version 2 will be out soon.
+Builders’ Collective is in Version 1 (post capstone Demo Day). Version 2 will be out soon.
 
 ## License
 
 MIT
 
 ## Contact
-Tanaka Lusengo - tc.lusengo@gmail.com
-Project Link: https://github.com/tanaka-lusengo/builders-collective-server
+- Tanaka Lusengo - tc.lusengo@gmail.com
+- Project Link: https://github.com/tanaka-lusengo/builders-collective-server
