@@ -1,7 +1,7 @@
 {
   "name": "builders-collective-server",
   "version": "1.0.0",
-  "description": "server to builders-collective-client",
+  "description": "server to builders-collective-client - Deployment",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
