@@ -3,6 +3,9 @@
 A dedicated social media platform for Construction Professionals & Skilled Tradesmen and companies’ to network and secure quality jobs.
 - The back-end for https://github.com/tanaka-lusengo/builders-collective-client
 
+- You can find the deployed site on: https://builders-collective.herokuapp.com/
+
+
 ## Table of Content:
 - About The App
 - Technologies
@@ -22,6 +25,10 @@ MERN Stack + Socket.io
 - [socket io] 
 
 ## Setup / Installation
+
+You can find the deployed site on: https://builders-collective.herokuapp.com/
+
+alternatively to use on your local host:
 
 Download or clone the repository: 
 ```sh
