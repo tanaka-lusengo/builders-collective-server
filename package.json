@@ -1,7 +1,7 @@
 {
   "name": "builders-collective-server",
   "version": "1.0.0",
-  "description": "server to builders-collective-client - Deployment",
+  "description": "server to builders-collective-client",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -21,6 +21,8 @@
     "moment": "^2.29.1",
     "mongoose": "^6.2.8",
     "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "path": "^0.12.7",
     "socket.io": "^4.4.1"
   },
   "devDependencies": {
