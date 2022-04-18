@@ -151,6 +151,37 @@ const getUserById = async (req, res) => {
   }
 };
 
+// get user Friends
+const getUserFriends = async (req, res) => {
+  try {
+    const user = await UserModel.findById(req.params.userId);
+    // promise all due to any number of friends
+    const friends = await Promise.all(
+      user.following.map((friendId) => {
+        return UserModel.findById(friendId);
+      })
+    );
+    // create an array for friends
+    let friendList = [];
+    friends.map((friend) => {
+      // only get the items required
+      const { _id, profilePicture, firstName, lastName, jobTitle, username } =
+        friend;
+      friendList.push({
+        _id,
+        profilePicture,
+        firstName,
+        lastName,
+        jobTitle,
+        username,
+      });
+    });
+    res.status(200).json(friendList);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 // follow a user
 const followUser = async (req, res) => {
   if (req.body.userId !== req.params.id) {
@@ -201,6 +232,7 @@ module.exports = {
   updateUser,
   deleteUser,
   getUserById,
+  getUserFriends,
   followUser,
   unFollowUser,
 };
