@@ -111,43 +111,6 @@ const getQSJobs = async () => {
   }
 };
 
-// get construction manager jobs
-const getCMJobs = async () => {
-  try {
-    const cmJobs = await axios.get(REED_API_GET_BY_JT("construction manager"), {
-      auth: {
-        username: Reed_API_KEY,
-      },
-    });
-
-    const response = cmJobs.data.results;
-    await onSuccess(response);
-    // console.log("CM Jobs -->", response.length);
-  } catch (err) {
-    console.log("get Construction Manager Jobs error -->", err);
-  }
-};
-
-// get construction architect/Designer jobs
-const getCAJobs = async () => {
-  try {
-    const caJobs = await axios.get(
-      REED_API_GET_BY_JT("construction architect"),
-      {
-        auth: {
-          username: Reed_API_KEY,
-        },
-      }
-    );
-
-    const response = caJobs.data.results;
-    await onSuccess(response);
-    // console.log("Arch Jobs -->", response.length);
-  } catch (err) {
-    console.log("get Architecture Jobs error -->", err);
-  }
-};
-
 // get electrician jobs
 const getElecJobs = async () => {
   try {
@@ -185,26 +148,6 @@ const getPlumberJobs = async () => {
   }
 };
 
-// air conditioning engineer jobs
-const getAirconJobs = async () => {
-  try {
-    const airconJobs = await axios.get(
-      REED_API_GET_BY_JT("air conditioning engineer"),
-      {
-        auth: {
-          username: Reed_API_KEY,
-        },
-      }
-    );
-
-    const response = airconJobs.data.results;
-    await onSuccess(response);
-    // console.log("Aircon Jobs -->", response.length);
-  } catch (err) {
-    console.log("get Aircon Jobs error -->", err);
-  }
-};
-
 // bricklayer jobs
 const getBricklayerJobs = async () => {
   try {
@@ -236,23 +179,6 @@ const getCarpenterJobs = async () => {
     // console.log("Carpenter Jobs -->", response.length);
   } catch (err) {
     console.log("get Carpenter Jobs error -->", err);
-  }
-};
-
-// plasterer jobs
-const getPlastererJobs = async () => {
-  try {
-    const plastererJobs = await axios.get(REED_API_GET_BY_JT("plasterer"), {
-      auth: {
-        username: Reed_API_KEY,
-      },
-    });
-
-    const response = plastererJobs.data.results;
-    await onSuccess(response);
-    // console.log("Plaster Jobs -->", response.length);
-  } catch (err) {
-    console.log("get Plasterer Jobs error -->", err);
   }
 };
 
@@ -318,14 +244,10 @@ const getJobsByTitleAndLocation = async (req, res) => {
 
 module.exports = {
   getQSJobs,
-  getCMJobs,
-  getCAJobs,
   getElecJobs,
   getPlumberJobs,
-  getAirconJobs,
   getBricklayerJobs,
   getCarpenterJobs,
-  getPlastererJobs,
   getJobs,
   getJobsByTitle,
   getJobsByLocation,
