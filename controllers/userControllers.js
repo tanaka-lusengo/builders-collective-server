@@ -17,6 +17,7 @@ const registerNewUser = async (req, res) => {
     education,
     profilePicture,
     coverPicture,
+    following,
   } = req.body;
 
   if (
@@ -53,6 +54,7 @@ const registerNewUser = async (req, res) => {
         education: education,
         profilePicture: profilePicture,
         coverPicture: coverPicture,
+        following: following,
       });
 
       // save new user and respond to client console
