@@ -2,8 +2,9 @@
 
 A dedicated social media platform for Construction Professionals & Skilled Tradesmen and companies’ to network and secure quality jobs.
 
-- This is the back-end for the client https://github.com/tanaka-lusengo/builders-collective-client
-- The Socket server for real-time communication can be found https://github.com/tanaka-lusengo/builders-collective-socket
+Builders’ Collective requires: 
+- client (https://github.com/tanaka-lusengo/builders-collective-client) + 
+- socket server (https://github.com/tanaka-lusengo/builders-collective-socket) to run.
 
 - You can find the deployed site on: https://builders-collective.herokuapp.com/
 
@@ -41,10 +42,8 @@ Install the dependencies and devDependencies and start the server.
 
 This application requires the below .env environment variables to run as seen on .env.example:
 
-- PORT = "PORT"
-- SOCKET_PORT = "SOCKET_PORT"
+
 - API_KEY="KEY"
-- ORIGIN="URL"
 - MONGO_URL = "MONGO_URL STRING"
 
 
