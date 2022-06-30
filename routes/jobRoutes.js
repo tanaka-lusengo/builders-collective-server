@@ -3,8 +3,6 @@ const jobControllers = require("../controllers/jobControllers");
 
 // api route to push straight to mongoDB
 jobControllers.getQSJobs();
-jobControllers.getElecJobs();
-jobControllers.getPlumberJobs();
 jobControllers.getBricklayerJobs();
 jobControllers.getCarpenterJobs();
 

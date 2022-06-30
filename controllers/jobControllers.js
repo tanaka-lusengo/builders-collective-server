@@ -111,43 +111,6 @@ const getQSJobs = async () => {
   }
 };
 
-// get electrician jobs
-const getElecJobs = async () => {
-  try {
-    const elecJobs = await axios.get(REED_API_GET_BY_JT("electrician"), {
-      auth: {
-        username: Reed_API_KEY,
-      },
-    });
-
-    const response = elecJobs.data.results;
-    await onSuccess(response);
-    // console.log("Elec Jobs -->", response.length);
-  } catch (err) {
-    console.log("get Electrician Jobs error -->", err);
-  }
-};
-
-// plumbing & Heating engineer jobs
-const getPlumberJobs = async () => {
-  try {
-    const plumberJobs = await axios.get(
-      REED_API_GET_BY_JT("plumbing heating engineer"),
-      {
-        auth: {
-          username: Reed_API_KEY,
-        },
-      }
-    );
-
-    const response = plumberJobs.data.results;
-    await onSuccess(response);
-    // console.log("Plumb Jobs -->", response.length);
-  } catch (err) {
-    console.log("get Plumber Jobs error -->", err);
-  }
-};
-
 // bricklayer jobs
 const getBricklayerJobs = async () => {
   try {
@@ -244,8 +207,6 @@ const getJobsByTitleAndLocation = async (req, res) => {
 
 module.exports = {
   getQSJobs,
-  getElecJobs,
-  getPlumberJobs,
   getBricklayerJobs,
   getCarpenterJobs,
   getJobs,
