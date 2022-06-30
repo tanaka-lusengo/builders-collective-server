@@ -2,11 +2,11 @@
 
 A dedicated social media platform for Construction Professionals & Skilled Tradesmen and companies’ to network and secure quality jobs.
 
-Builders’ Collective requires: 
+- You can find the deployed site on: https://builders-collective.herokuapp.com/
+
+To run locally, Builders’ Collective requires: 
 - client (https://github.com/tanaka-lusengo/builders-collective-client) + 
 - socket server (https://github.com/tanaka-lusengo/builders-collective-socket) to run.
-
-- You can find the deployed site on: https://builders-collective.herokuapp.com/
 
 
 ## Table of Content:
